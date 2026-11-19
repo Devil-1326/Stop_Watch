@@ -1,0 +1,369 @@
+
+/* ================================
+   GENERAL RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at 50% 35%, #1c303d 0%, #101820 65%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 8%;
+    background: rgba(23, 35, 46, 0.9);
+    border-bottom: 1px solid #293947;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #55d6be;
+}
+
+.navbar p {
+    color: #8fa0ac;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* ================================
+   MAIN SECTION
+================================ */
+
+.stopwatch-section {
+    flex: 1;
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.heading {
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease;
+}
+
+.tagline {
+    color: #55d6be;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.heading h1 {
+    font-size: clamp(38px, 6vw, 58px);
+    margin-bottom: 15px;
+}
+
+.heading h1 span {
+    color: #55d6be;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.heading > p:last-child {
+    color: #a9b8c4;
+    font-size: 15px;
+}
+
+/* ================================
+   STOPWATCH CARD
+================================ */
+
+.stopwatch-card {
+    max-width: 700px;
+    margin: auto;
+    padding: 45px 40px;
+    background: rgba(27, 42, 54, 0.85);
+    border: 1px solid rgba(85, 214, 190, 0.18);
+    border-radius: 18px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    animation: fadeIn 1s ease;
+}
+
+/* ================================
+   STATUS INDICATOR
+================================ */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: #263846;
+    color: #55d6be;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* Animated indicator when running */
+.status:has(~ .display) {
+    transition: 0.3s ease;
+}
+
+/* ================================
+   TIMER DISPLAY
+================================ */
+
+.display {
+    font-size: clamp(42px, 8vw, 76px);
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-variant-numeric: tabular-nums;
+    margin: 38px 0;
+    color: #ffffff;
+    text-shadow: 0 0 25px rgba(85, 214, 190, 0.12);
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.buttons button {
+    min-width: 110px;
+    padding: 14px 22px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: #55d6be;
+    color: #102029;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.buttons button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+    box-shadow: 0 7px 20px rgba(85, 214, 190, 0.2);
+}
+
+.buttons button:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.buttons button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+#pauseBtn {
+    background: #f4c95d;
+}
+
+#resetBtn {
+    background: #f08080;
+}
+
+#lapBtn {
+    background: #8da9c4;
+}
+
+.buttons button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ================================
+   LAP RECORDS
+================================ */
+
+.lap-section {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.lap-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.lap-heading h2 {
+    font-size: 20px;
+}
+
+.lap-heading span {
+    color: #55d6be;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+#lapList {
+    list-style: none;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+#lapList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 18px;
+    margin-bottom: 7px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.035);
+    color: #bdcbd5;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+#lapList li:hover {
+    background: rgba(85, 214, 190, 0.08);
+    border-color: rgba(85, 214, 190, 0.12);
+}
+
+#lapList .empty-message {
+    justify-content: center;
+    color: #718391;
+    background: transparent;
+}
+
+/* Scrollbar */
+
+#lapList::-webkit-scrollbar {
+    width: 5px;
+}
+
+#lapList::-webkit-scrollbar-thumb {
+    background: #55d6be;
+    border-radius: 10px;
+}
+
+#lapList::-webkit-scrollbar-track {
+    background: #263846;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    padding: 22px;
+    text-align: center;
+    background: rgba(23, 35, 46, 0.9);
+    border-top: 1px solid #293947;
+    color: #8fa0ac;
+    font-size: 12px;
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 20px 6%;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .stopwatch-section {
+        padding: 55px 6%;
+    }
+
+    .stopwatch-card {
+        padding: 30px 18px;
+    }
+
+    .display {
+        letter-spacing: 1px;
+        margin: 30px 0;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .buttons button {
+        flex: 1 1 40%;
+        min-width: 0;
+    }
+
+    .lap-section {
+        margin-top: 35px;
+    }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

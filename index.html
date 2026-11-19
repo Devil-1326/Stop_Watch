@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Stopwatch</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">CHRONO<span>.</span></a>
+            <p>PRECISION TIMEKEEPING</p>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="stopwatch-section">
+
+            <div class="heading">
+                <p class="tagline">EVERY SECOND COUNTS</p>
+                <h1>Digital <span>Stopwatch</span></h1>
+                <p>Track your time. Beat your limits.</p>
+            </div>
+
+            <div class="stopwatch-card">
+
+                <div class="status" id="status">
+                    READY
+                </div>
+
+                <div class="display" id="display">
+                    00:00:00.00
+                </div>
+
+                <div class="buttons">
+
+                    <button id="startBtn">Start</button>
+
+                    <button id="pauseBtn">Pause</button>
+
+                    <button id="resetBtn">Reset</button>
+
+                    <button id="lapBtn">Lap</button>
+
+                </div>
+
+                <div class="lap-section">
+
+                    <div class="lap-heading">
+                        <h2>Lap Records</h2>
+                        <span id="lapCount">0 LAPS</span>
+                    </div>
+
+                    <ul id="lapList">
+                        <li class="empty-message">
+                            No laps recorded yet
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CHRONO Stopwatch. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
